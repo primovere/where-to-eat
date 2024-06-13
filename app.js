@@ -2,11 +2,13 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
+app.use(express.static("public"));
+
 app.get("/", (req, res) => {
   res.redirect("/where-to-eat");
 });
 
-app.get("/where-to-eat", (req, res) => {
+app.get("/", (req, res) => {
   res.send("listing restaurants");
 });
 
