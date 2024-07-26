@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="stylesheets/index.css" />
+<link rel="stylesheet" href="/stylesheets/index.css" />
 <!-- search bar -->
 <div class="container search-bar">
   <div class="search-bar-outer">
@@ -32,7 +32,7 @@
     <div class="col-md-10 col-12 mx-auto">
       <div class="row row-cols-sm-3">
         {{#each restaurants as |restaurant|}}
-          <a href="/restaurants/1" class="text-secondary">
+          <a href="/restaurant/{{restaurant.id}}" class="text-secondary">
             <div class="card mb-3">
               <img
                 class="card-img-top"

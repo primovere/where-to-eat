@@ -18,9 +18,10 @@ app.get("/restaurants", (req, res) => {
   res.render("index", { restaurants: restaurants });
 });
 
-app.get("/restaurants/:id", (req, res) => {
+app.get("/restaurant/:id", (req, res) => {
   const id = req.params.id;
-  res.send(`read restaurant: ${id}`);
+  const restaurant = restaurants.find((rt) => rt.id.toString() === id);
+  res.render("detail", { restaurant });
 });
 
 app.listen(port, () => {
