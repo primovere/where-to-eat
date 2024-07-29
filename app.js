@@ -15,7 +15,22 @@ app.get("/", (req, res) => {
 });
 
 app.get("/restaurants", (req, res) => {
-  res.render("index", { restaurants: restaurants });
+  // the property name is equal to the value of name of <input>
+  const keyword = req.query.search?.trim();
+
+  // Restaurant names and contents can be searched
+  const matchedRestaurants = keyword
+    ? restaurants.filter((rest) =>
+        Object.values(rest).some((property) => {
+          if (typeof property === "string") {
+            return property.toLowerCase().includes(keyword.toLowerCase());
+          }
+          return false;
+        })
+      )
+    : restaurants;
+
+  res.render("index", { restaurants: matchedRestaurants, keyword });
 });
 
 app.get("/restaurant/:id", (req, res) => {
